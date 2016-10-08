@@ -1,0 +1,15 @@
+#+TITLE: Virtual Machine Templates for FP(y)LLL
+
+This image installs the latest version of [[https://github.com/fplll/fpylll][fplll]], [[https://github.com/fplll/fpylll][fpylll]] and the [[https://github.com/fplll/strategizer][strategizer]] into an [[https://aws.amazon.com/ec2/instance-types/][AWS]] image.
+
+1. setup AWS
+
+2. adapt the [[https://aws.amazon.com/ec2/instance-types/][instance type]] in the field =instance_type= in =fplll-packer-aws.json=
+
+3. run [[https://www.packer.io][packer]]
+
+  #+BEGIN_EXAMPLE
+packer build fplll-packer-aws.json
+  #+END_EXAMPLE
+
+4. log into Amazon’s AWS console, launch your instance and SSH into it

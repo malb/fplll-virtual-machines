@@ -1,0 +1,36 @@
+{
+    "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": ""
+    },
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "eu-west-1",
+        "source_ami": "ami-2897d35b",
+        "instance_type": "t2.micro",
+        "ssh_username": "admin",
+        "ami_name": "fplll"
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "inline_shebang": "/bin/bash -e",
+        "inline": [
+            "sleep 30",
+            "sudo apt-get update",
+            "sudo apt-get install -y git g++-4.9 libgmp-dev libmpfr-dev build-essential libtool autoconf pkg-config",
+            "sudo apt-get install -y python-pip python-dev python-flake8 virtualenv",
+            "sudo apt-get install -y tmux mosh",
+            "virtualenv fplll",
+            "source ./fplll/bin/activate",
+            "git clone --recursive https://github.com/fplll/strategizer",
+            "cd strategizer",
+            "./setup.sh",
+            "pip install jupyter",
+            "export LD_LIBRARY_PATH='$VIRTUAL_ENV/lib'",
+            "echo 'source $HOME/fplll/bin/activate' >> $HOME/.bashrc",
+            "echo 'export LD_LIBRARY_PATH=\"$VIRTUAL_ENV/lib\"' >> $HOME/.bashrc"
+        ]
+    }]
+}
