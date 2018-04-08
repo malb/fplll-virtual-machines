@@ -1,0 +1,17 @@
+## -*- docker-image-name: "martinralbrecht/fpylll" -*-
+
+FROM martinralbrecht/fplll
+MAINTAINER Martin Albrecht <martin.albrecht@royalholloway.ac.uk>
+
+ARG BRANCH=master
+
+RUN apt update && \
+    apt install -y python-pip python-dev && \
+    apt clean && \
+    git clone --branch $BRANCH https://github.com/fplll/fpylll && \
+    cd fpylll && \
+    pip install Cython && \
+    pip install -r requirements.txt && \
+    pip install -r suggestions.txt && \
+    python setup.py build && \
+    python setup.py -q install 
