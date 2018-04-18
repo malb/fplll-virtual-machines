@@ -1,6 +1,9 @@
 #+TITLE: Virtual Machine Templates for FP(y)LLL
 
-This image installs the latest version of [[https://github.com/fplll/fpylll][fplll]], [[https://github.com/fplll/fpylll][fpylll]] and the [[https://github.com/fplll/strategizer][strategizer]] into an [[https://aws.amazon.com/ec2/instance-types/][AWS]] image.
+
+* AWS
+
+Install the latest version of [[https://github.com/fplll/fpylll][fplll]], [[https://github.com/fplll/fpylll][fpylll]] and the [[https://github.com/fplll/strategizer][strategizer]] into an [[https://aws.amazon.com/ec2/instance-types/][AWS]] image.
 
 1. setup AWS
 
@@ -8,8 +11,21 @@ This image installs the latest version of [[https://github.com/fplll/fpylll][fpl
 
 3. run [[https://www.packer.io][packer]]
 
-  #+BEGIN_EXAMPLE
+  #+BEGIN_SRC bash
 packer build fplll-packer-aws.json
-  #+END_EXAMPLE
+  #+END_SRC
 
 4. log into Amazon’s AWS console, launch your instance and SSH into it
+
+* Docker
+
+This produces the docker images at https://hub.docker.com/r/martinralbrecht/fplll/ and https://hub.docker.com/r/martinralbrecht/fpylll/
+
+#+BEGIN_SRC bash
+docker build --build-arg BRANCH=master -f Dockerfile.fplll -t martinralbrecht/fplll:latest 
+docker build --build-arg BRANCH=5.2.0  -f Dockerfile.fplll -t martinralbrecht/fplll:5.2.0 
+docker build --build-arg BRANCH=master -f Dockerfile.fpylll -t martinralbrecht/fpylll:latest 
+
+docker push martinralbrecht/fpylll:latest ## Haha, you can’t do that
+#+END_SRC
+
