@@ -21,11 +21,18 @@ packer build fplll-packer-aws.json
 
 This produces the docker images at https://hub.docker.com/r/martinralbrecht/fplll/ and https://hub.docker.com/r/martinralbrecht/fpylll/
 
-#+BEGIN_SRC bash
-docker build --build-arg BRANCH=master -f Dockerfile.fplll -t martinralbrecht/fplll:latest 
-docker build --build-arg BRANCH=5.2.0  -f Dockerfile.fplll -t martinralbrecht/fplll:5.2.0 
-docker build --build-arg BRANCH=master -f Dockerfile.fpylll -t martinralbrecht/fpylll:latest 
+#+BEGIN_SRC bash :async
+docker build --build-arg BRANCH=master   -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:latest .
+docker build --build-arg BRANCH=5.2.1    -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:5.2.1 .
+docker build --build-arg BRANCH=master   -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:latest .
+docker build --build-arg BRANCH=0.4.0dev -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:0.4.0dev .
+#+END_SRC
 
-docker push martinralbrecht/fpylll:latest ## Haha, you can’t do that
+
+#+BEGIN_SRC bash
+docker push martinralbrecht/fplll:latest  ## Haha, you can’t do that
+docker push martinralbrecht/fplll:5.2.1   
+docker push martinralbrecht/fpylll:latest 
+docker push martinralbrecht/fpylll:0.4.0dev
 #+END_SRC
 
