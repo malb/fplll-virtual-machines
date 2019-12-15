@@ -5,7 +5,7 @@ case "$1" in
         sudo apt-get update
         sudo apt-get update
         sudo apt-get install -y git libgmp-dev libmpfr-dev libqd-dev build-essential libtool autoconf pkg-config
-        sudo apt-get install -y python-pip python-dev python-flake8 virtualenv
+        sudo apt-get install -y python3-pip python3-dev python3-flake8 virtualenv
         sudo apt-get install -y tmux mosh
         ;;
     osx)
@@ -19,7 +19,7 @@ case "$1" in
         ;;
 esac
 
-virtualenv fplll
+virtualenv --python=python3 fplll
 
 source ./fplll/bin/activate
 export LD_LIBRARY_PATH="$VIRTUAL_ENV/lib"
