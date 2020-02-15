@@ -1,0 +1,13 @@
+## -*- docker-image-name: "martinralbrecht/g6k" -*-
+
+FROM martinralbrecht/fpylll
+MAINTAINER Martin Albrecht <martin.albrecht@royalholloway.ac.uk>
+
+ARG BRANCH=master
+
+RUN git clone --branch $BRANCH https://github.com/fplll/g6k && \
+    cd g6k && \
+    make && \
+    pip3 install -r requirements.txt && \
+    python3 setup.py build && \
+    python3 setup.py -q install 

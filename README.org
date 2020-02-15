@@ -1,9 +1,8 @@
-#+TITLE: Virtual Machine Templates for FP(y)LLL
+#+TITLE: Virtual Machine Templates for FPLLL Projects
 
+* Amazon Web Services (AWS)
 
-* AWS
-
-Install the latest version of [[https://github.com/fplll/fpylll][fplll]], [[https://github.com/fplll/fpylll][fpylll]] and the [[https://github.com/fplll/strategizer][strategizer]] into an [[https://aws.amazon.com/ec2/instance-types/][AWS]] image.
+Installs the latest version of [[https://github.com/fplll/fpylll][fplll]], [[https://github.com/fplll/fpylll][fpylll]] and [[https://github.com/fplll/g6k][g6k]] into an [[https://aws.amazon.com/ec2/instance-types/][AWS]] image.
 
 1. setup AWS
 
@@ -11,7 +10,7 @@ Install the latest version of [[https://github.com/fplll/fpylll][fplll]], [[http
 
 3. run [[https://www.packer.io][packer]]
 
-  #+BEGIN_SRC bash
+  #+BEGIN_SRC bash :async
 packer build fplll-packer-aws.json
   #+END_SRC
 
@@ -19,20 +18,42 @@ packer build fplll-packer-aws.json
 
 * Docker
 
-This produces the docker images at https://hub.docker.com/r/martinralbrecht/fplll/ and https://hub.docker.com/r/martinralbrecht/fpylll/
+** FPLLL
 
-#+BEGIN_SRC bash :async
+https://hub.docker.com/r/martinralbrecht/fplll
+
+#+BEGIN_SRC bash
 docker build --build-arg BRANCH=master   -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:latest .
-docker build --build-arg BRANCH=5.2.1    -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:5.2.1 .
-docker build --build-arg BRANCH=master   -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:latest .
-docker build --build-arg BRANCH=0.4.0dev -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:0.4.0dev .
+docker build --build-arg BRANCH=5.3.2    -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:5.3.2 .
 #+END_SRC
-
 
 #+BEGIN_SRC bash
 docker push martinralbrecht/fplll:latest  ## Haha, you can’t do that
-docker push martinralbrecht/fplll:5.2.1   
-docker push martinralbrecht/fpylll:latest 
-docker push martinralbrecht/fpylll:0.4.0dev
+docker push martinralbrecht/fplll:5.3.2
 #+END_SRC
 
+** FPyLLL
+
+https://hub.docker.com/r/martinralbrecht/fpylll
+
+#+BEGIN_SRC bash
+docker build --build-arg BRANCH=master   -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:latest .
+docker build --build-arg BRANCH=0.5.1dev -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:0.5.1dev .
+#+END_SRC
+
+#+BEGIN_SRC bash
+docker push martinralbrecht/fpylll:latest 
+docker push martinralbrecht/fpylll:0.5.1dev
+#+END_SRC
+
+** G6K
+
+https://hub.docker.com/r/martinralbrecht/g6k
+
+#+BEGIN_SRC bash
+docker build --build-arg BRANCH=master -f Dockerfile.g6k --no-cache -t martinralbrecht/g6k:latest .
+#+END_SRC
+
+#+BEGIN_SRC bash :async
+docker push martinralbrecht/g6k:latest 
+#+END_SRC

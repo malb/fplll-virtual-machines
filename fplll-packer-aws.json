@@ -11,7 +11,7 @@
         "source_ami": "ami-0e9cc061cd3259f22",
         "instance_type": "t2.medium",
         "ssh_username": "admin",
-        "ami_name": "fpylll"
+        "ami_name": "fplll"
     }],
     "provisioners": [{
         "type": "shell",
@@ -30,14 +30,25 @@
             "make -j2",
             "sudo make install",
             "cd ..",
+
             "git clone https://github.com/fplll/fpylll",
             "cd fpylll",
             "sudo pip3 install -U pip",
             "sudo pip3 install -U Cython",
             "sudo pip3 install -r requirements.txt",
             "sudo pip3 install -r suggestions.txt",
-            "python3 setup.py build_ext",
+            "python3 setup.py build",
             "sudo python3 setup.py install",
+            "cd ..",
+
+            "git clone https://github.com/fplll/g6k",
+            "cd g6k",
+            "make",
+            "sudo pip3 install -r requirements.txt",
+            "python3 setup.py build",
+            "sudo python3 setup.py install",
+            "cd ..",
+
             "sudo pip3 install jupyter"
         ]
     }]
