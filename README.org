@@ -78,5 +78,3 @@ docker build --build-arg \
 docker push martinralbrecht/sagemath-g6k:latest
 #+END_SRC
 
-#+RESULTS:
-: a5b6fad91d5fb1038e142e6a34eb7887
