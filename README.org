@@ -22,30 +22,36 @@ packer build fplll-packer-aws.json
 
 https://hub.docker.com/r/martinralbrecht/fplll
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC bash :async
 docker build --build-arg BRANCH=master \
        -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:latest .
-docker build --build-arg BRANCH=5.3.2  \
+docker build --build-arg BRANCH=5.3.3  \
        -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:5.3.2 .
 #+END_SRC
 
-#+BEGIN_SRC bash
+#+RESULTS:
+
+#+BEGIN_SRC bash :async  :results output
 docker push martinralbrecht/fplll:latest  ## Haha, you can’t do that
-docker push martinralbrecht/fplll:5.3.2
+docker push martinralbrecht/fplll:5.3.3
 #+END_SRC
+
+#+RESULTS:
 
 ** FPyLLL
 
 https://hub.docker.com/r/martinralbrecht/fpylll
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC bash :async
 docker build --build-arg BRANCH=master   \
        -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:latest .
 docker build --build-arg BRANCH=0.5.1dev \
        -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:0.5.1dev .
 #+END_SRC
 
-#+BEGIN_SRC bash
+#+RESULTS:
+
+#+BEGIN_SRC bash :async :results output
 docker push martinralbrecht/fpylll:latest 
 docker push martinralbrecht/fpylll:0.5.1dev
 #+END_SRC
@@ -54,27 +60,23 @@ docker push martinralbrecht/fpylll:0.5.1dev
 
 https://hub.docker.com/r/martinralbrecht/g6k
 
-#+BEGIN_SRC bash
-docker build --build-arg \
-       BRANCH=master \
-       -f Dockerfile.g6k --no-cache \
-       -t martinralbrecht/g6k:latest .
+#+BEGIN_SRC bash :async
+docker build --build-arg BRANCH=master \
+       -f Dockerfile.g6k --no-cache -t martinralbrecht/g6k:latest .
 #+END_SRC
 
-#+BEGIN_SRC bash :async
+#+BEGIN_SRC bash :async :results output
 docker push martinralbrecht/g6k:latest 
 #+END_SRC
 
 ** SageMath + G6K/FPyLLL
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC bash :async
 docker build --build-arg \
        FPLLL_BRANCH=master FPYLLL_BRANCH=master G6K_BRANCH=master \
-       -f Dockerfile.g6k --no-cache \
-       -t martinralbrecht/sagemath-g6k:latest .
+       -f Dockerfile.g6k --no-cache -t martinralbrecht/sagemath-g6k:latest .
 #+END_SRC
 
-#+BEGIN_SRC bash :async
+#+BEGIN_SRC bash :async :results output
 docker push martinralbrecht/sagemath-g6k:latest
 #+END_SRC
-
