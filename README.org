@@ -71,12 +71,20 @@ docker push martinralbrecht/g6k:latest
 
 ** SageMath + G6K/FPyLLL
 
+https://hub.docker.com/r/martinralbrecht/sagemath-g6k
+
 #+BEGIN_SRC bash :async
-docker build --build-arg \
-       FPLLL_BRANCH=master FPYLLL_BRANCH=master G6K_BRANCH=master \
-       -f Dockerfile.g6k --no-cache -t martinralbrecht/sagemath-g6k:latest .
+docker build \
+       --build-arg FPLLL_BRANCH=master \
+       --build-arg FPYLLL_BRANCH=master \
+       --build-arg G6K_BRANCH=master \
+       -f Dockerfile.sagemath-g6k --no-cache -t martinralbrecht/sagemath-g6k:latest .
 #+END_SRC
+
+#+RESULTS:
 
 #+BEGIN_SRC bash :async :results output
 docker push martinralbrecht/sagemath-g6k:latest
 #+END_SRC
+
+#+RESULTS:
