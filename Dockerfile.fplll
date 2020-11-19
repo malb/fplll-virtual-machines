@@ -1,4 +1,4 @@
-## -*- docker-image-name: "martinralbrecht/fplll" -*-
+## -*- docker-image-name: "fplll/fplll" -*-
 
 FROM debian:buster
 MAINTAINER Martin Albrecht <martin.albrecht@royalholloway.ac.uk>
@@ -12,5 +12,5 @@ RUN apt update && \
     cd fplll && \
     autoreconf -i && \
     ./configure --prefix=/usr && \
-    make install
+    make -j4 install
     

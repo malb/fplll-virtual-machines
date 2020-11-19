@@ -20,40 +20,40 @@ packer build fplll-packer-aws.json
 
 ** FPLLL
 
-https://hub.docker.com/r/martinralbrecht/fplll
+https://hub.docker.com/r/fplll/fplll
 
 #+BEGIN_SRC bash :async
 docker build --build-arg BRANCH=master \
-       -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:latest .
+       -f Dockerfile.fplll  --no-cache -t fplll/fplll:latest .
 docker build --build-arg BRANCH=5.3.3  \
-       -f Dockerfile.fplll  --no-cache -t martinralbrecht/fplll:5.3.2 .
+       -f Dockerfile.fplll  --no-cache -t fplll/fplll:5.3.2 .
 #+END_SRC
 
 #+RESULTS:
 
 #+BEGIN_SRC bash :async  :results output
-docker push martinralbrecht/fplll:latest  ## Haha, you can’t do that
-docker push martinralbrecht/fplll:5.3.3
+docker push fplll/fplll:latest  ## Haha, you can’t do that
+docker push fplll/fplll:5.3.3
 #+END_SRC
 
 #+RESULTS:
 
 ** FPyLLL
 
-https://hub.docker.com/r/martinralbrecht/fpylll
+https://hub.docker.com/r/fplll/fpylll
 
 #+BEGIN_SRC bash :async
 docker build --build-arg BRANCH=master   \
-       -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:latest .
+       -f Dockerfile.fpylll --no-cache -t fplll/fpylll:latest .
 docker build --build-arg BRANCH=0.5.1dev \
-       -f Dockerfile.fpylll --no-cache -t martinralbrecht/fpylll:0.5.1dev .
+       -f Dockerfile.fpylll --no-cache -t fplll/fpylll:0.5.1dev .
 #+END_SRC
 
 #+RESULTS:
 
 #+BEGIN_SRC bash :async :results output
-docker push martinralbrecht/fpylll:latest 
-docker push martinralbrecht/fpylll:0.5.1dev
+docker push fplll/fpylll:latest 
+docker push fplll/fpylll:0.5.1dev
 #+END_SRC
 
 ** G6K
