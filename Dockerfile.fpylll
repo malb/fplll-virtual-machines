@@ -1,6 +1,6 @@
 ## -*- docker-image-name: "martinralbrecht/fpylll" -*-
 
-FROM martinralbrecht/fplll
+FROM fplll/fplll
 MAINTAINER Martin Albrecht <martin.albrecht@royalholloway.ac.uk>
 
 ARG BRANCH=master
